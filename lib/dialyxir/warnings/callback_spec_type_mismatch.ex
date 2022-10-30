@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackSpecTypeMismatch do
+defmodule DialyxirVendored.Warnings.CallbackSpecTypeMismatch do
   @moduledoc """
   The return type in the @spec does not match the
   expected return type of the behaviour.
@@ -19,19 +19,19 @@ defmodule Dialyxir.Warnings.CallbackSpecTypeMismatch do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_spec_type_mismatch
   def warning(), do: :callback_spec_type_mismatch
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_behaviour, function | _]) do
     "The @spec return type does not match the expected return type for #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity, success_type, callback_type]) do
     pretty_behaviour = Erlex.pretty_print(behaviour)
@@ -50,7 +50,7 @@ defmodule Dialyxir.Warnings.CallbackSpecTypeMismatch do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.GuardFail do
+defmodule DialyxirVendored.Examples.GuardFail do
   def ok() do
     ok(0)
   end

@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.OverlappingContract do
+defmodule DialyxirVendored.Warnings.OverlappingContract do
   @moduledoc """
   The function has an additional @spec that is already covered more
   generally by a higher @spec.
@@ -17,25 +17,25 @@ defmodule Dialyxir.Warnings.OverlappingContract do
         end
       end
   """
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :overlapping_contract
   def warning(), do: :overlapping_contract
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function, arity]) do
     "The contract for #{function}/#{arity} is overloaded."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity]) do
     pretty_module = Erlex.pretty_print(module)

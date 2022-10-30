@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.FunctionApplicationArgs do
+defmodule DialyxirVendored.Examples.FunctionApplicationArgs do
   def f do
     fn :a, [] -> :ok end
   end

@@ -1,6 +1,6 @@
-defmodule Dialyxir.OutputTest do
+defmodule DialyxirVendored.OutputTest do
   use ExUnit.Case
-  alias Dialyxir.Output
+  alias DialyxirVendored.Output
 
   setup do
     ansi_enabled = IO.ANSI.enabled?()

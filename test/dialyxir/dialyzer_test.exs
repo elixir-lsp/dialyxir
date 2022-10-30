@@ -1,6 +1,6 @@
-defmodule Dialyxir.DialyzerTest do
+defmodule DialyxirVendored.DialyzerTest do
   use ExUnit.Case
-  alias Dialyxir.Dialyzer
+  alias DialyxirVendored.Dialyzer
 
   defmodule StubSuccess do
     def run(_, _), do: {:ok, {"time", [], ""}}

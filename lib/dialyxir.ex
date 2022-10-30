@@ -1,7 +1,7 @@
-defmodule Dialyxir do
+defmodule DialyxirVendored do
   @moduledoc false
   use Application
-  alias Dialyxir.Output
+  alias DialyxirVendored.Output
 
   def start(_, _) do
     Output.info("""

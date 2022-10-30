@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.ContractSuperType do
+defmodule DialyxirVendored.Examples.ContractSuperType do
   @spec ok() :: any
   def ok() do
     :ok

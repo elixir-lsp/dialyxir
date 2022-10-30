@@ -1,4 +1,4 @@
-defmodule Dialyxir.WarningHelpers do
+defmodule DialyxirVendored.WarningHelpers do
   @spec ordinal(non_neg_integer) :: String.t()
   def ordinal(1), do: "1st"
   def ordinal(2), do: "2nd"

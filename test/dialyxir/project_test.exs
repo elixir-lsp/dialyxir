@@ -1,5 +1,5 @@
-defmodule Dialyxir.ProjectTest do
-  alias Dialyxir.Project
+defmodule DialyxirVendored.ProjectTest do
+  alias DialyxirVendored.Project
 
   use ExUnit.Case
   import ExUnit.CaptureIO, only: [capture_io: 1, capture_io: 2]

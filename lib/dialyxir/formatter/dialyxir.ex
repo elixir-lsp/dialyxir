@@ -1,9 +1,9 @@
-defmodule Dialyxir.Formatter.Dialyxir do
+defmodule DialyxirVendored.Formatter.DialyxirVendored do
   @moduledoc false
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format(dialyzer_warning = {_tag, {file, line}, message}) do
     {warning_name, arguments} = message
     base_name = Path.relative_to_cwd(file)
@@ -76,12 +76,12 @@ defmodule Dialyxir.Formatter.Dialyxir do
     #{message}
 
     Legacy warning:
-    #{Dialyxir.Formatter.Dialyzer.format(warning)}
+    #{DialyxirVendored.Formatter.Dialyzer.format(warning)}
     """
   end
 
   defp warning(warning_name) do
-    warnings = Dialyxir.Warnings.warnings()
+    warnings = DialyxirVendored.Warnings.warnings()
 
     if Map.has_key?(warnings, warning_name) do
       Map.get(warnings, warning_name)

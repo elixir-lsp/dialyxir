@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackSpecArgumentTypeMismatch do
+defmodule DialyxirVendored.Warnings.CallbackSpecArgumentTypeMismatch do
   @moduledoc """
   Spec type of argument does not match the callback's expected type.
 
@@ -18,25 +18,25 @@ defmodule Dialyxir.Warnings.CallbackSpecArgumentTypeMismatch do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_spec_arg_type_mismatch
   def warning(), do: :callback_spec_arg_type_mismatch
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_behaviour, function | _]) do
     "Spec type mismatch in argument to callback #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity, position, success_type, callback_type]) do
     pretty_behaviour = Erlex.pretty_print(behaviour)
     pretty_success_type = Erlex.pretty_print_type(success_type)
     pretty_callback_type = Erlex.pretty_print_type(callback_type)
-    ordinal_position = Dialyxir.WarningHelpers.ordinal(position)
+    ordinal_position = DialyxirVendored.WarningHelpers.ordinal(position)
 
     """
     The @spec type for the #{ordinal_position} argument is not a
@@ -51,7 +51,7 @@ defmodule Dialyxir.Warnings.CallbackSpecArgumentTypeMismatch do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

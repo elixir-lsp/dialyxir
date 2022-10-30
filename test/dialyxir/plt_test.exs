@@ -1,5 +1,5 @@
-defmodule Dialyxir.PltTest do
-  alias Dialyxir.Plt
+defmodule DialyxirVendored.PltTest do
+  alias DialyxirVendored.Plt
   import ExUnit.CaptureIO, only: [capture_io: 1]
 
   use ExUnit.Case
@@ -17,7 +17,7 @@ defmodule Dialyxir.PltTest do
     end
 
     assert capture_io(fun) ==
-             "==> dialyxir\n" <>
+             "==> dialyxir_vendored\n" <>
                "Looking up modules in dialyxir_erlang-20.3.plt\n" <>
                "Looking up modules in dialyxir_erlang-20.3_elixir-1.6.2_deps-dev.plt\n" <>
                "/var/dialyxir_erlang-20.3_elixir-1.6.2_deps-dev.plt\n" <>

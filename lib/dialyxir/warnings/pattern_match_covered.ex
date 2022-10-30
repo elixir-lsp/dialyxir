@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.PatternMatchCovered do
+defmodule DialyxirVendored.Warnings.PatternMatchCovered do
   @moduledoc """
   The pattern match has a later clause that will never be executed,
   because a more general clause is higher in the matching order.
@@ -16,20 +16,20 @@ defmodule Dialyxir.Warnings.PatternMatchCovered do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :pattern_match_cov
   def warning(), do: :pattern_match_cov
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([pattern, _]) do
     "The pattern #{pattern} can never match the type, " <>
       "because it is covered by previous clauses."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([pattern, type]) do
     pretty_pattern = Erlex.pretty_print_pattern(pattern)
@@ -44,7 +44,7 @@ defmodule Dialyxir.Warnings.PatternMatchCovered do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc
