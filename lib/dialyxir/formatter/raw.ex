@@ -1,9 +1,9 @@
-defmodule Dialyxir.Formatter.Raw do
+defmodule DialyxirVendored.Formatter.Raw do
   @moduledoc false
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format(warning) do
     inspect(warning, limit: :infinity)
   end

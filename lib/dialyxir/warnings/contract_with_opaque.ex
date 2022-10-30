@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.ContractWithOpaque do
+defmodule DialyxirVendored.Warnings.ContractWithOpaque do
   @moduledoc """
   The @spec says the function is returning an opaque type, but it is
   returning a different type.
@@ -17,19 +17,19 @@ defmodule Dialyxir.Warnings.ContractWithOpaque do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :contract_with_opaque
   def warning(), do: :contract_with_opaque
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "The @spec for #{function} has an opaque subtype which is violated by the success typing."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, type, signature_type]) do
     pretty_module = Erlex.pretty_print(module)
@@ -45,7 +45,7 @@ defmodule Dialyxir.Warnings.ContractWithOpaque do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

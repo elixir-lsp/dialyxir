@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.UnmatchedReturn do
+defmodule DialyxirVendored.Warnings.UnmatchedReturn do
   @moduledoc """
   The invoked expression returns a union of types and the call does
   not match on its return types using e.g. a case or wildcard.
@@ -47,19 +47,19 @@ defmodule Dialyxir.Warnings.UnmatchedReturn do
         end
       end
   """
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :unmatched_return
   def warning(), do: :unmatched_return
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(_) do
     "The expression produces multiple types, but none are matched."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([type]) do
     pretty_type = Erlex.pretty_print_type(type)
@@ -73,7 +73,7 @@ defmodule Dialyxir.Warnings.UnmatchedReturn do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

@@ -1,17 +1,17 @@
-defmodule Dialyxir.Warnings.CallWithOpaque do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.CallWithOpaque do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :call_with_opaque
   def warning(), do: :call_with_opaque
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Type mismatch in call with opaque term in #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, args, arg_positions, expected_args]) do
     pretty_module = Erlex.pretty_print(module)
@@ -21,12 +21,12 @@ defmodule Dialyxir.Warnings.CallWithOpaque do
   end
 
   defp form_positions(arg_positions = [_]) do
-    form_position_string = Dialyxir.WarningHelpers.form_position_string(arg_positions)
+    form_position_string = DialyxirVendored.WarningHelpers.form_position_string(arg_positions)
     "an opaque term in #{form_position_string} argument"
   end
 
   defp form_positions(arg_positions) do
-    form_position_string = Dialyxir.WarningHelpers.form_position_string(arg_positions)
+    form_position_string = DialyxirVendored.WarningHelpers.form_position_string(arg_positions)
     "opaque terms in #{form_position_string} arguments"
   end
 
@@ -44,9 +44,9 @@ defmodule Dialyxir.Warnings.CallWithOpaque do
     "terms of different types are expected in these positions"
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

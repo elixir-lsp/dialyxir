@@ -1,9 +1,9 @@
-defmodule Dialyxir.Formatter.Short do
+defmodule DialyxirVendored.Formatter.Short do
   @moduledoc false
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format({_tag, {file, line}, {warning_name, arguments}}) do
     base_name = Path.relative_to_cwd(file)
 
@@ -14,7 +14,7 @@ defmodule Dialyxir.Formatter.Short do
   end
 
   defp warning(warning_name) do
-    warnings = Dialyxir.Warnings.warnings()
+    warnings = DialyxirVendored.Warnings.warnings()
 
     if Map.has_key?(warnings, warning_name) do
       Map.get(warnings, warning_name)

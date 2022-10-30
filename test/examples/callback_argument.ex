@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.CallbackArgument do
+defmodule DialyxirVendored.Examples.CallbackArgument do
   defmodule Behaviour do
     @callback ok(:ok) :: :ok
   end

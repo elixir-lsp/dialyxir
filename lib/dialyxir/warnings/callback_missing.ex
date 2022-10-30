@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackMissing do
+defmodule DialyxirVendored.Warnings.CallbackMissing do
   @moduledoc """
   Module implements a behaviour, but does not have all of its
   callbacks. This is also a compiler warning.
@@ -19,17 +19,17 @@ defmodule Dialyxir.Warnings.CallbackMissing do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_missing
   def warning(), do: :callback_missing
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity]) do
     pretty_behaviour = Erlex.pretty_print(behaviour)
@@ -37,7 +37,7 @@ defmodule Dialyxir.Warnings.CallbackMissing do
     "Undefined callback function #{function}/#{arity} (behaviour #{pretty_behaviour})."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

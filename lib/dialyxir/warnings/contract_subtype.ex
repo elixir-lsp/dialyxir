@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.ContractSubtype do
+defmodule DialyxirVendored.Warnings.ContractSubtype do
   # TODO: could not create warning with this example (and --overspecs)
   @moduledoc """
   The type in the @spec does not completely cover the types returned
@@ -18,19 +18,19 @@ defmodule Dialyxir.Warnings.ContractSubtype do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :contract_subtype
   def warning(), do: :contract_subtype
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Type specification for #{function} is a subtype of the success typing."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, contract, signature]) do
     pretty_module = Erlex.pretty_print(module)
@@ -51,7 +51,7 @@ defmodule Dialyxir.Warnings.ContractSubtype do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

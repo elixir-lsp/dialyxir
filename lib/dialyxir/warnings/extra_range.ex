@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.ExtraRange do
+defmodule DialyxirVendored.Warnings.ExtraRange do
   @moduledoc """
   The @spec says the function returns more types than the function
   actually returns.
@@ -13,19 +13,19 @@ defmodule Dialyxir.Warnings.ExtraRange do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :extra_range
   def warning(), do: :extra_range
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "@spec for #{function} has more types than are returned by the function."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, extra_ranges, signature_range]) do
     pretty_module = Erlex.pretty_print(module)
@@ -46,7 +46,7 @@ defmodule Dialyxir.Warnings.ExtraRange do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

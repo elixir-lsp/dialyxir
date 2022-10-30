@@ -1,17 +1,17 @@
-defmodule Dialyxir.Warnings.ContractDiff do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.ContractDiff do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :contract_diff
   def warning(), do: :contract_diff
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Type specification is not equal to the success typing for #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, contract, signature]) do
     pretty_module = Erlex.pretty_print(module)
@@ -32,9 +32,9 @@ defmodule Dialyxir.Warnings.ContractDiff do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

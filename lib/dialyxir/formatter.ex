@@ -1,13 +1,13 @@
-defmodule Dialyxir.Formatter do
+defmodule DialyxirVendored.Formatter do
   @moduledoc """
   Elixir-friendly dialyzer formatter.
 
   Wrapper around normal Dialyzer warning messages that provides
   example output for error messages.
   """
-  import Dialyxir.Output, only: [info: 1]
+  import DialyxirVendored.Output, only: [info: 1]
 
-  alias Dialyxir.FilterMap
+  alias DialyxirVendored.FilterMap
 
   @type warning() :: {tag :: term(), {file :: Path.t(), line :: pos_integer()}, {atom(), list()}}
 
@@ -96,11 +96,11 @@ defmodule Dialyxir.Formatter do
   end
 
   defp filter_warning(filterer, warning = {_, {file, line}, {warning_type, _}}, filter_map) do
-    if Map.has_key?(Dialyxir.Warnings.warnings(), warning_type) do
+    if Map.has_key?(DialyxirVendored.Warnings.warnings(), warning_type) do
       {skip?, matching_filters} =
         try do
           filterer.filter_warning?(
-            {to_string(file), warning_type, line, Dialyxir.Formatter.Short.format(warning)},
+            {to_string(file), warning_type, line, DialyxirVendored.Formatter.Short.format(warning)},
             filter_map
           )
         rescue
@@ -130,7 +130,7 @@ defmodule Dialyxir.Formatter do
     Enum.reject(warnings, fn warning ->
       formatted_warnings =
         warning
-        |> Dialyxir.Formatter.Dialyzer.format()
+        |> DialyxirVendored.Formatter.Dialyzer.format()
         |> List.wrap()
 
       Enum.empty?(filterer.filter_legacy_warnings(formatted_warnings))

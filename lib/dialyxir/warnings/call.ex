@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.Call do
+defmodule DialyxirVendored.Warnings.Call do
   @moduledoc """
   The function call will not succeed.
 
@@ -15,19 +15,19 @@ defmodule Dialyxir.Warnings.Call do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :call
   def warning(), do: :call
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "The function call #{function} will not succeed."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([
         module,
@@ -43,7 +43,7 @@ defmodule Dialyxir.Warnings.Call do
     pretty_module = Erlex.pretty_print(module)
 
     call_string =
-      Dialyxir.WarningHelpers.call_or_apply_to_string(
+      DialyxirVendored.WarningHelpers.call_or_apply_to_string(
         arg_positions,
         fail_reason,
         signature_args,
@@ -60,7 +60,7 @@ defmodule Dialyxir.Warnings.Call do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

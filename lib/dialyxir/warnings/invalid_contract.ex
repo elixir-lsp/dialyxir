@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.InvalidContract do
+defmodule DialyxirVendored.Warnings.InvalidContract do
   @moduledoc """
   The @spec for the function does not match the success typing of the
   function.
@@ -17,19 +17,19 @@ defmodule Dialyxir.Warnings.InvalidContract do
   mismatch.
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :invalid_contract
   def warning(), do: :invalid_contract
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Invalid type specification for function #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, signature]) do
     pretty_module = Erlex.pretty_print(module)
@@ -46,7 +46,7 @@ defmodule Dialyxir.Warnings.InvalidContract do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

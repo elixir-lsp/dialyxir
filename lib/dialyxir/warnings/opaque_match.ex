@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.OpaqueMatch do
+defmodule DialyxirVendored.Warnings.OpaqueMatch do
   @moduledoc """
   Attempted to pattern match against the internal structure of an
   opaque term.
@@ -25,13 +25,13 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :opaque_match
   def warning(), do: :opaque_match
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_pattern, type | _]) do
     pretty_type = Erlex.pretty_print_type(type)
@@ -39,7 +39,7 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
     "Attempted to pattern match against the internal structure of an opaque term of type #{pretty_type}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([pattern, opaque_type, opaque_term]) do
     pretty_opaque_term = Erlex.pretty_print(opaque_term)
@@ -66,7 +66,7 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

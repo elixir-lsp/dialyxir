@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackTypeMismatch do
+defmodule DialyxirVendored.Warnings.CallbackTypeMismatch do
   @moduledoc """
   The success type of the function does not match the callback type in
   the behaviour.
@@ -18,19 +18,19 @@ defmodule Dialyxir.Warnings.CallbackTypeMismatch do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_type_mismatch
   def warning(), do: :callback_type_mismatch
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_behaviour, function | _]) do
     "Type mismatch for @callback #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t() | non_neg_integer]) :: String.t()
   def format_long([behaviour, function, arity, fail_type, success_type]) do
     pretty_behaviour = Erlex.pretty_print(behaviour)
@@ -48,7 +48,7 @@ defmodule Dialyxir.Warnings.CallbackTypeMismatch do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

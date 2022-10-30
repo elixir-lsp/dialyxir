@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.FunctionApplicationNoFun do
+defmodule DialyxirVendored.Examples.FunctionApplicationNoFun do
   def ok() do
     fun = fn _ -> :ok end
     fun.()

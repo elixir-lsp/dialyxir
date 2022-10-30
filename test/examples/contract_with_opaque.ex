@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.ContractWithOpaque do
+defmodule DialyxirVendored.Examples.ContractWithOpaque do
   defmodule Types do
     @opaque type :: :ok
   end

@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Dialyzer do
+defmodule Mix.Tasks.DialyzerVendored do
   @shortdoc "Runs dialyzer with default or project-defined flags."
 
   @moduledoc """
@@ -94,10 +94,10 @@ defmodule Mix.Tasks.Dialyzer do
 
   use Mix.Task
   import System, only: [user_home!: 0]
-  import Dialyxir.Output, only: [info: 1, error: 1]
-  alias Dialyxir.Project
-  alias Dialyxir.Plt
-  alias Dialyxir.Dialyzer
+  import DialyxirVendored.Output, only: [info: 1, error: 1]
+  alias DialyxirVendored.Project
+  alias DialyxirVendored.Plt
+  alias DialyxirVendored.Dialyzer
 
   defmodule Build do
     @shortdoc "Build the required PLT(s) and exit."
@@ -113,7 +113,7 @@ defmodule Mix.Tasks.Dialyzer do
     use Mix.Task
 
     def run(args) do
-      Mix.Tasks.Dialyzer.run(["--plt" | args])
+      Mix.Tasks.DialyzerVendored.run(["--plt" | args])
     end
   end
 
@@ -132,7 +132,7 @@ defmodule Mix.Tasks.Dialyzer do
     @command_options [all: :boolean]
     def run(args) do
       {opts, _, _dargs} = OptionParser.parse(args, strict: @command_options)
-      Mix.Tasks.Dialyzer.clean(opts)
+      Mix.Tasks.DialyzerVendored.clean(opts)
     end
   end
 
@@ -174,8 +174,8 @@ defmodule Mix.Tasks.Dialyzer do
           check_plt(force_check?)
         end
 
-      default = Dialyxir.Project.default_ignore_warnings()
-      ignore_warnings = Dialyxir.Project.dialyzer_ignore_warnings()
+      default = DialyxirVendored.Project.default_ignore_warnings()
+      ignore_warnings = DialyxirVendored.Project.dialyzer_ignore_warnings()
 
       cond do
         !ignore_warnings && File.exists?(default) ->
@@ -359,14 +359,14 @@ defmodule Mix.Tasks.Dialyzer do
       info("""
       COMPATIBILITY NOTICE
       ------------------------
-      Previous usage of a pre-0.4 version of Dialyxir detected. Please be aware that the 0.4 release
+      Previous usage of a pre-0.4 version of DialyxirVendored detected. Please be aware that the 0.4 release
       makes a number of changes to previous defaults. Among other things, the PLT task is automatically
       run when dialyzer is run, PLT paths have changed,
       transitive dependencies are included by default in the PLT, and no additional warning flags
       beyond the dialyzer defaults are included. All these properties can be changed in configuration.
       (see `mix help dialyzer`).
 
-      If you no longer use the older Dialyxir in any projects and do not want to see this notice each time you upgrade your Erlang/Elixir distribution, you can delete your old pre-0.4 PLT files. (`rm ~/.dialyxir_core_*.plt`)
+      If you no longer use the older DialyxirVendored in any projects and do not want to see this notice each time you upgrade your Erlang/Elixir distribution, you can delete your old pre-0.4 PLT files. (`rm ~/.dialyxir_core_*.plt`)
       """)
     end
   end

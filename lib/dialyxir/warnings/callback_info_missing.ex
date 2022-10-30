@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackInfoMissing do
+defmodule DialyxirVendored.Warnings.CallbackInfoMissing do
   @moduledoc """
   The module is using a behaviour that does not exist or is not a
   behaviour. This is also a compiler warning.
@@ -14,17 +14,17 @@ defmodule Dialyxir.Warnings.CallbackInfoMissing do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_info_missing
   def warning(), do: :callback_info_missing
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour]) do
     pretty_behaviour = Erlex.pretty_print(behaviour)
@@ -32,7 +32,7 @@ defmodule Dialyxir.Warnings.CallbackInfoMissing do
     "Callback info about the #{pretty_behaviour} behaviour is not available."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

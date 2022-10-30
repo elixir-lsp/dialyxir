@@ -1,17 +1,17 @@
-defmodule Dialyxir.Warnings.AppCall do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.AppCall do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :app_call
   def warning(), do: :app_call
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Module or function to apply is not an atom in #{function}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, culprit, expected_type, actual_type]) do
     pretty_module = Erlex.pretty_print(module)
@@ -22,9 +22,9 @@ defmodule Dialyxir.Warnings.AppCall do
       "#{culprit} is of type #{pretty_expected_type}, not #{pretty_actual_type}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

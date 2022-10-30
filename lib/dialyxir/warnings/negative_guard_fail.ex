@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.NegativeGuardFail do
+defmodule DialyxirVendored.Warnings.NegativeGuardFail do
   @moduledoc """
   The function guard either presents an impossible guard or the only
   calls will never succeed against the guards.
@@ -24,19 +24,19 @@ defmodule Dialyxir.Warnings.NegativeGuardFail do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :neg_guard_fail
   def warning(), do: :neg_guard_fail
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(_) do
     "The guard test can never succeed."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([guard, args]) do
     pretty_args = Erlex.pretty_print_args(args)
@@ -60,7 +60,7 @@ defmodule Dialyxir.Warnings.NegativeGuardFail do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc
