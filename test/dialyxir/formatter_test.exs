@@ -1,14 +1,14 @@
-defmodule Dialyxir.FormatterTest do
+defmodule DialyxirVendored.FormatterTest do
   use ExUnit.Case
 
   import ExUnit.CaptureIO, only: [capture_io: 1]
 
-  alias Dialyxir.Formatter
-  alias Dialyxir.Formatter.Dialyxir, as: DialyxirFormatter
-  alias Dialyxir.Formatter.Dialyzer, as: DialyzerFormatter
-  alias Dialyxir.Formatter.Short, as: ShortFormatter
-  alias Dialyxir.Formatter.IgnoreFileStrict, as: IgnoreFileStrictFormatter
-  alias Dialyxir.Project
+  alias DialyxirVendored.Formatter
+  alias DialyxirVendored.Formatter.DialyxirVendored, as: DialyxirVendoredFormatter
+  alias DialyxirVendored.Formatter.Dialyzer, as: DialyzerFormatter
+  alias DialyxirVendored.Formatter.Short, as: ShortFormatter
+  alias DialyxirVendored.Formatter.IgnoreFileStrict, as: IgnoreFileStrictFormatter
+  alias DialyxirVendored.Project
 
   defp in_project(app, f) when is_atom(app) do
     Mix.Project.in_project(app, "test/fixtures/#{Atom.to_string(app)}", fn _ -> f.() end)
@@ -151,7 +151,7 @@ defmodule Dialyxir.FormatterTest do
 
     filter_args = [{:list_unused_filters, true}]
 
-    for format <- [ShortFormatter, DialyxirFormatter, DialyzerFormatter] do
+    for format <- [ShortFormatter, DialyxirVendoredFormatter, DialyzerFormatter] do
       in_project(:ignore, fn ->
         capture_io(fn ->
           result = Formatter.format_and_filter(warnings, Project, filter_args, format)

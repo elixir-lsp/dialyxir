@@ -16,7 +16,7 @@ defmodule Mix.Tasks.Dialyzer.Explain do
   ```
   """
   use Mix.Task
-  alias Dialyxir.Output
+  alias DialyxirVendored.Output
 
   def run(args) do
     case OptionParser.parse(args, strict: []) do
@@ -34,7 +34,7 @@ defmodule Mix.Tasks.Dialyzer.Explain do
   defp explanation_text(warning_name) do
     warning = String.to_atom(warning_name)
 
-    case Map.get(Dialyxir.Warnings.warnings(), warning) do
+    case Map.get(DialyxirVendored.Warnings.warnings(), warning) do
       nil ->
         "Unknown warning named: #{warning_name}"
 
@@ -45,7 +45,7 @@ defmodule Mix.Tasks.Dialyzer.Explain do
 
   defp list_warnings do
     warnings =
-      Dialyxir.Warnings.warnings()
+      DialyxirVendored.Warnings.warnings()
       |> Map.keys()
       |> Enum.sort()
       |> Enum.map_join("\n", &Atom.to_string/1)

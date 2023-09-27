@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.MapUpdate do
+defmodule DialyxirVendored.Warnings.MapUpdate do
   @moduledoc """
   Elixir can only use the map update syntax to update a key that is in
   the map.
@@ -14,20 +14,20 @@ defmodule Dialyxir.Warnings.MapUpdate do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :map_update
   def warning(), do: :map_update
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_map, key]) do
     pretty_key = ErlexVendored.pretty_print(key)
     "Attempted to update key #{pretty_key} in a map that does not have that key."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([map, key]) do
     pretty_key = ErlexVendored.pretty_print(key)
@@ -44,7 +44,7 @@ defmodule Dialyxir.Warnings.MapUpdate do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

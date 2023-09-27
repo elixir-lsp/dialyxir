@@ -1,17 +1,17 @@
-defmodule Dialyxir.Warnings.ContractRange do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.ContractRange do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :contract_range
   def warning(), do: :contract_range
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_, _, function | _]) do
     "Contract cannot be correct because return type for #{function} is mismatched."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([contract, module, function, arg_strings, line, contract_return]) do
     pretty_contract = ErlexVendored.pretty_print_contract(contract)
@@ -33,9 +33,9 @@ defmodule Dialyxir.Warnings.ContractRange do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

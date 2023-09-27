@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.ContractSupertype do
+defmodule DialyxirVendored.Warnings.ContractSupertype do
   @moduledoc """
   The @spec, while not incorrect, is more general than the type
   returned by the function.
@@ -13,19 +13,19 @@ defmodule Dialyxir.Warnings.ContractSupertype do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :contract_supertype
   def warning(), do: :contract_supertype
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_module, function | _]) do
     "Type specification for #{function} is a supertype of the success typing."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, contract, signature]) do
     pretty_module = ErlexVendored.pretty_print(module)
@@ -46,7 +46,7 @@ defmodule Dialyxir.Warnings.ContractSupertype do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

@@ -1,4 +1,4 @@
-defmodule Dialyxir.Mixfile do
+defmodule DialyxirVendored.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/jeremyjh/dialyxir"
@@ -6,7 +6,7 @@ defmodule Dialyxir.Mixfile do
 
   def project do
     [
-      app: :dialyxir,
+      app: :dialyxir_vendored,
       version: @version,
       elixir: ">= 1.12.0",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -20,7 +20,7 @@ defmodule Dialyxir.Mixfile do
         flags: [:unmatched_returns, :error_handling, :underspecs]
       ],
       # Docs
-      name: "Dialyxir",
+      name: "DialyxirVendored",
       homepage_url: @source_url,
       # The main page in the docs
       docs: [
@@ -33,7 +33,7 @@ defmodule Dialyxir.Mixfile do
   end
 
   def application do
-    [mod: {Dialyxir, []}, extra_applications: [:dialyzer, :crypto, :mix, :erts, :syntax_tools]]
+    [mod: {DialyxirVendored, []}, extra_applications: [:dialyzer, :crypto, :mix, :erts, :syntax_tools]]
   end
 
   defp description do

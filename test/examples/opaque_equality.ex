@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.OpaqueEquality do
+defmodule DialyxirVendored.Examples.OpaqueEquality do
   defmodule Types do
     @opaque type :: :ok
 

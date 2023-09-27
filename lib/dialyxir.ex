@@ -1,4 +1,4 @@
-defmodule Dialyxir do
+defmodule DialyxirVendored do
   @moduledoc false
   use Application
 

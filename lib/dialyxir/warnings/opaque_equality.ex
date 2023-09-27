@@ -1,11 +1,11 @@
-defmodule Dialyxir.Warnings.OpaqueEquality do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.OpaqueEquality do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :opaque_eq
   def warning(), do: :opaque_eq
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_type, _op, opaque_type]) do
     pretty_opaque_type = opaque_type |> ErlexVendored.pretty_print() |> unqualify_module()
@@ -24,7 +24,7 @@ defmodule Dialyxir.Warnings.OpaqueEquality do
     end
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([type, _op, opaque_type]) do
     pretty_opaque_type = ErlexVendored.pretty_print_type(opaque_type)
@@ -33,9 +33,9 @@ defmodule Dialyxir.Warnings.OpaqueEquality do
       "and a term of opaque type #{pretty_opaque_type}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

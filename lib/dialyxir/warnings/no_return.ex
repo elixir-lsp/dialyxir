@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.NoReturn do
+defmodule DialyxirVendored.Warnings.NoReturn do
   @moduledoc """
   The function has no return. This is usually due to an issue later on
   in the call stack causing it to not be recognized as returning for
@@ -30,17 +30,17 @@ defmodule Dialyxir.Warnings.NoReturn do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :no_return
   def warning(), do: :no_return
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t() | atom]) :: String.t()
   def format_long([type | name]) do
     name_string =
@@ -70,7 +70,7 @@ defmodule Dialyxir.Warnings.NoReturn do
     "#{name_string} #{type_string}"
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

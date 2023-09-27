@@ -1,11 +1,11 @@
-defmodule Dialyxir.Formatter.Short do
+defmodule DialyxirVendored.Formatter.Short do
   @moduledoc false
 
-  alias Dialyxir.Formatter.Utils
+  alias DialyxirVendored.Formatter.Utils
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format({_tag, {file, line}, {warning_name, arguments}}) do
     base_name = Path.relative_to_cwd(file)
 
