@@ -47,7 +47,7 @@ defmodule Dialyxir.Mixfile do
 
   defp deps do
     [
-      {:erlex, ">= 0.2.6"},
+      {:erlex_vendored, github: "elixir-lsp/erlex", ref: "82db0e82ee4896491bc26dec99f5d795f03ab9f4"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end

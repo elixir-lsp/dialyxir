@@ -34,7 +34,7 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
   @impl Dialyxir.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_pattern, type | _]) do
-    pretty_type = Erlex.pretty_print_type(type)
+    pretty_type = ErlexVendored.pretty_print_type(type)
 
     "Attempted to pattern match against the internal structure of an opaque term of type #{pretty_type}."
   end
@@ -42,7 +42,7 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([pattern, opaque_type, opaque_term]) do
-    pretty_opaque_term = Erlex.pretty_print(opaque_term)
+    pretty_opaque_term = ErlexVendored.pretty_print(opaque_term)
 
     term =
       if opaque_type == opaque_term do
@@ -51,7 +51,7 @@ defmodule Dialyxir.Warnings.OpaqueMatch do
         pretty_opaque_term
       end
 
-    pretty_pattern = Erlex.pretty_print_pattern(pattern)
+    pretty_pattern = ErlexVendored.pretty_print_pattern(pattern)
 
     """
     Attempted to pattern match against the internal structure of an opaque term.

@@ -44,7 +44,7 @@ defmodule Dialyxir.Warnings.CallbackNotExported do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity]) do
-    pretty_behaviour = Erlex.pretty_print(behaviour)
+    pretty_behaviour = ErlexVendored.pretty_print(behaviour)
 
     "Callback function #{function}/#{arity} exists but is not exported (behaviour #{pretty_behaviour})."
   end

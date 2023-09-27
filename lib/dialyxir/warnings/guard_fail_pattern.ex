@@ -27,8 +27,8 @@ defmodule Dialyxir.Warnings.GuardFailPattern do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([pattern, type]) do
-    pretty_type = Erlex.pretty_print_type(type)
-    pretty_pattern = Erlex.pretty_print_pattern(pattern)
+    pretty_type = ErlexVendored.pretty_print_type(type)
+    pretty_pattern = ErlexVendored.pretty_print_pattern(pattern)
 
     "The clause guard cannot succeed. The pattern #{pretty_pattern} " <>
       "was matched against the type #{pretty_type}."

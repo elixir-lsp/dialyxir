@@ -35,7 +35,7 @@ defmodule Dialyxir.Warnings.CallToMissingFunction do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity]) do
-    pretty_module = Erlex.pretty_print(module)
+    pretty_module = ErlexVendored.pretty_print(module)
     "Call to missing or private function #{pretty_module}.#{function}/#{arity}."
   end
 
