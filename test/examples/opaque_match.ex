@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.OpaqueMatch do
+defmodule DialyxirVendored.Examples.OpaqueMatch do
   defmodule Struct do
     defstruct [:opaque]
 

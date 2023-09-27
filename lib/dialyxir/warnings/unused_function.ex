@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.UnusedFunction do
+defmodule DialyxirVendored.Warnings.UnusedFunction do
   @moduledoc """
   Due to issues higher in the function or call stack, while the
   function is recognized as used by the compiler, it will never be
@@ -17,23 +17,23 @@ defmodule Dialyxir.Warnings.UnusedFunction do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :unused_fun
   def warning(), do: :unused_fun
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([function, arity]) do
     "Function #{function}/#{arity} will never be called."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

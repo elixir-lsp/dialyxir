@@ -1,6 +1,6 @@
-defmodule Dialyxir.Formatter.Utils do
+defmodule DialyxirVendored.Formatter.Utils do
   def warning(warning_name) do
-    warnings = Dialyxir.Warnings.warnings()
+    warnings = DialyxirVendored.Warnings.warnings()
 
     if Map.has_key?(warnings, warning_name) do
       Map.get(warnings, warning_name)

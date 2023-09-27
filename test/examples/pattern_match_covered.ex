@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.PatternMuchCovered do
+defmodule DialyxirVendored.Examples.PatternMuchCovered do
   def ok() do
     unmatched(:error)
   end

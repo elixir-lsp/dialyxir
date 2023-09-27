@@ -1,4 +1,4 @@
-defmodule Dialyxir.FilterMap do
+defmodule DialyxirVendored.FilterMap do
   @moduledoc """
   A counters holding warnings to be skipped.
 

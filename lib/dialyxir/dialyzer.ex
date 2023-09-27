@@ -1,9 +1,9 @@
-defmodule Dialyxir.Dialyzer do
-  import Dialyxir.Output
+defmodule DialyxirVendored.Dialyzer do
+  import DialyxirVendored.Output
   alias String.Chars
-  alias Dialyxir.Formatter
-  alias Dialyxir.Project
-  alias Dialyxir.FilterMap
+  alias DialyxirVendored.Formatter
+  alias DialyxirVendored.Project
+  alias DialyxirVendored.FilterMap
 
   defmodule Runner do
     @dialyxir_args [
@@ -14,7 +14,7 @@ defmodule Dialyxir.Dialyzer do
       :quiet_with_result
     ]
 
-    @default_formatter Dialyxir.Formatter.Dialyxir
+    @default_formatter DialyxirVendored.Formatter.Dialyxir
 
     def run(args, filterer) do
       try do
@@ -69,13 +69,13 @@ defmodule Dialyxir.Dialyzer do
       end
     end
 
-    defp parse_formatter("dialyzer"), do: Dialyxir.Formatter.Dialyzer
-    defp parse_formatter("dialyxir"), do: Dialyxir.Formatter.Dialyxir
-    defp parse_formatter("github"), do: Dialyxir.Formatter.Github
-    defp parse_formatter("ignore_file"), do: Dialyxir.Formatter.IgnoreFile
-    defp parse_formatter("ignore_file_string"), do: Dialyxir.Formatter.IgnoreFileStrict
-    defp parse_formatter("raw"), do: Dialyxir.Formatter.Raw
-    defp parse_formatter("short"), do: Dialyxir.Formatter.Short
+    defp parse_formatter("dialyzer"), do: DialyxirVendored.Formatter.Dialyzer
+    defp parse_formatter("dialyxir"), do: DialyxirVendored.Formatter.Dialyxir
+    defp parse_formatter("github"), do: DialyxirVendored.Formatter.Github
+    defp parse_formatter("ignore_file"), do: DialyxirVendored.Formatter.IgnoreFile
+    defp parse_formatter("ignore_file_string"), do: DialyxirVendored.Formatter.IgnoreFileStrict
+    defp parse_formatter("raw"), do: DialyxirVendored.Formatter.Raw
+    defp parse_formatter("short"), do: DialyxirVendored.Formatter.Short
 
     defp parse_formatter(unknown) do
       warning("""

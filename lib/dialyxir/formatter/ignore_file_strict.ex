@@ -1,11 +1,11 @@
-defmodule Dialyxir.Formatter.IgnoreFileStrict do
+defmodule DialyxirVendored.Formatter.IgnoreFileStrict do
   @moduledoc false
 
-  alias Dialyxir.Formatter.Utils
+  alias DialyxirVendored.Formatter.Utils
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format({_tag, {file, _location}, {warning_name, arguments}}) do
     warning = Utils.warning(warning_name)
     string = warning.format_short(arguments)

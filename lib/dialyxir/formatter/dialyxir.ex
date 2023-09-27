@@ -1,11 +1,11 @@
-defmodule Dialyxir.Formatter.Dialyxir do
+defmodule DialyxirVendored.Formatter.Dialyxir do
   @moduledoc false
 
-  alias Dialyxir.Formatter.Utils
+  alias DialyxirVendored.Formatter.Utils
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format(dialyzer_warning = {_tag, {file, location}, message}) do
     {warning_name, arguments} = message
     base_name = Path.relative_to_cwd(file)
@@ -78,7 +78,7 @@ defmodule Dialyxir.Formatter.Dialyxir do
     #{message}
 
     Legacy warning:
-    #{Dialyxir.Formatter.Dialyzer.format(warning)}
+    #{DialyxirVendored.Formatter.Dialyzer.format(warning)}
     """
   end
 end

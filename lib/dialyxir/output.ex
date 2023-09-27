@@ -1,4 +1,4 @@
-defmodule Dialyxir.Output do
+defmodule DialyxirVendored.Output do
   alias IO.ANSI
 
   def color(text, color) when is_binary(text) do

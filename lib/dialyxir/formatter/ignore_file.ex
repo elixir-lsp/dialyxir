@@ -1,9 +1,9 @@
-defmodule Dialyxir.Formatter.IgnoreFile do
+defmodule DialyxirVendored.Formatter.IgnoreFile do
   @moduledoc false
 
-  @behaviour Dialyxir.Formatter
+  @behaviour DialyxirVendored.Formatter
 
-  @impl Dialyxir.Formatter
+  @impl DialyxirVendored.Formatter
   def format({_tag, {file, _location}, {warning_name, _arguments}}) do
     ~s({"#{file}", :#{warning_name}},)
   end

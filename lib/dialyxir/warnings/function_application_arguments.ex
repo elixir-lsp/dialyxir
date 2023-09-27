@@ -1,11 +1,11 @@
-defmodule Dialyxir.Warnings.FunctionApplicationArguments do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.FunctionApplicationArguments do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :fun_app_args
   def warning(), do: :fun_app_args
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([args, _type]) do
     pretty_args = ErlexVendored.pretty_print_args(args)
@@ -17,7 +17,7 @@ defmodule Dialyxir.Warnings.FunctionApplicationArguments do
     format_short([args, type])
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([args, type]) do
     pretty_args = ErlexVendored.pretty_print_args(args)
@@ -39,18 +39,18 @@ defmodule Dialyxir.Warnings.FunctionApplicationArguments do
   end
 
   defp form_positions(arg_positions = [_]) do
-    form_position_string = Dialyxir.WarningHelpers.form_position_string(arg_positions)
+    form_position_string = DialyxirVendored.WarningHelpers.form_position_string(arg_positions)
     "the #{form_position_string} argument"
   end
 
   defp form_positions(arg_positions) do
-    form_position_string = Dialyxir.WarningHelpers.form_position_string(arg_positions)
+    form_position_string = DialyxirVendored.WarningHelpers.form_position_string(arg_positions)
     "the #{form_position_string} arguments"
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end

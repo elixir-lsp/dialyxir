@@ -1,15 +1,15 @@
-defmodule Dialyxir.Warnings.UnknownBehaviour do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.UnknownBehaviour do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :unknown_behaviour
   def warning(), do: :unknown_behaviour
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short(String.t()) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long(String.t()) :: String.t()
   def format_long(behaviour) do
     pretty_module = ErlexVendored.pretty_print(behaviour)
@@ -17,9 +17,9 @@ defmodule Dialyxir.Warnings.UnknownBehaviour do
     "Unknown behaviour: #{pretty_module}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
-    Dialyxir.Warning.default_explain()
+    DialyxirVendored.Warning.default_explain()
   end
 end
