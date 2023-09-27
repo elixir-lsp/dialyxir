@@ -28,9 +28,9 @@ defmodule Dialyxir.Warnings.ExtraRange do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, extra_ranges, signature_range]) do
-    pretty_module = Erlex.pretty_print(module)
-    pretty_extra = Erlex.pretty_print_type(extra_ranges)
-    pretty_signature = Erlex.pretty_print_type(signature_range)
+    pretty_module = ErlexVendored.pretty_print(module)
+    pretty_extra = ErlexVendored.pretty_print_type(extra_ranges)
+    pretty_signature = ErlexVendored.pretty_print_type(signature_range)
 
     """
     The type specification has too many types for the function.

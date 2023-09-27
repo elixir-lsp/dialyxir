@@ -39,8 +39,8 @@ defmodule Dialyxir.Warnings.CallWithoutOpaque do
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, args, expected_triples]) do
     expected = form_expected_without_opaque(expected_triples)
-    pretty_module = Erlex.pretty_print(module)
-    pretty_args = Erlex.pretty_print_args(args)
+    pretty_module = ErlexVendored.pretty_print(module)
+    pretty_args = ErlexVendored.pretty_print_args(args)
 
     """
     Function call without opaqueness type mismatch.
@@ -54,7 +54,7 @@ defmodule Dialyxir.Warnings.CallWithoutOpaque do
   # We know which positions N are to blame;
   # the list of triples will never be empty.
   defp form_expected_without_opaque([{position, type, type_string}]) do
-    pretty_type = Erlex.pretty_print_type(type_string)
+    pretty_type = ErlexVendored.pretty_print_type(type_string)
     form_position_string = Dialyxir.WarningHelpers.form_position_string([position])
 
     if :erl_types.t_is_opaque(type) do

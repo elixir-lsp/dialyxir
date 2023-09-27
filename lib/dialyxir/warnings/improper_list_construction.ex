@@ -12,7 +12,7 @@ defmodule Dialyxir.Warnings.ImproperListConstruction do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([tl_type]) do
-    pretty_type = Erlex.pretty_print_type(tl_type)
+    pretty_type = ErlexVendored.pretty_print_type(tl_type)
 
     "List construction (cons) will produce an improper list, " <>
       "because its second argument is #{pretty_type}."
