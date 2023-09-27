@@ -2,11 +2,11 @@
 # Copyright by James Fish
 # https://github.com/fishcakez/dialyze
 
-defmodule Dialyxir.Plt do
+defmodule DialyxirVendored.Plt do
   @moduledoc false
 
-  import Dialyxir.Output
-  alias Dialyxir.Formatter
+  import DialyxirVendored.Output
+  alias DialyxirVendored.Formatter
 
   def check(plts, fun \\ &check_plt/4) do
     find_plts(plts, [], fun)

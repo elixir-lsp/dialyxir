@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.ExtraRange do
+defmodule DialyxirVendored.Examples.ExtraRange do
   @spec ok() :: :ok | :error
   def ok() do
     :ok

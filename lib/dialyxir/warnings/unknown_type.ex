@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.UnknownType do
+defmodule DialyxirVendored.Warnings.UnknownType do
   @moduledoc """
   Spec references a missing @type.
 
@@ -15,13 +15,13 @@ defmodule Dialyxir.Warnings.UnknownType do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :unknown_type
   def warning(), do: :unknown_type
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short({String.t(), String.t(), String.t()}) :: String.t()
   def format_short({module, function, arity}) do
     pretty_module = ErlexVendored.pretty_print(module)
@@ -29,13 +29,13 @@ defmodule Dialyxir.Warnings.UnknownType do
     "Unknown type: #{pretty_module}.#{function}/#{arity}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long({String.t(), String.t(), String.t()}) :: String.t()
   def format_long({module, function, arity}) do
     format_short({module, function, arity})
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

@@ -1,9 +1,9 @@
-defmodule Dialyxir.Dialyzer do
-  import Dialyxir.Output
+defmodule DialyxirVendored.Dialyzer do
+  import DialyxirVendored.Output
   alias String.Chars
-  alias Dialyxir.Formatter
-  alias Dialyxir.Project
-  alias Dialyxir.FilterMap
+  alias DialyxirVendored.Formatter
+  alias DialyxirVendored.Project
+  alias DialyxirVendored.FilterMap
 
   defmodule Runner do
     @dialyxir_args [
@@ -23,31 +23,31 @@ defmodule Dialyxir.Dialyzer do
         formatter =
           cond do
             split[:format] == "dialyzer" ->
-              Dialyxir.Formatter.Dialyzer
+              DialyxirVendored.Formatter.Dialyzer
 
             split[:format] == "dialyxir" ->
-              Dialyxir.Formatter.Dialyxir
+              DialyxirVendored.Formatter.DialyxirVendored
 
             split[:format] == "github" ->
-              Dialyxir.Formatter.Github
+              DialyxirVendored.Formatter.Github
 
             split[:format] == "ignore_file" ->
-              Dialyxir.Formatter.IgnoreFile
+              DialyxirVendored.Formatter.IgnoreFile
 
             split[:format] == "ignore_file_strict" ->
-              Dialyxir.Formatter.IgnoreFileStrict
+              DialyxirVendored.Formatter.IgnoreFileStrict
 
             split[:format] == "raw" ->
-              Dialyxir.Formatter.Raw
+              DialyxirVendored.Formatter.Raw
 
             split[:format] == "short" ->
-              Dialyxir.Formatter.Short
+              DialyxirVendored.Formatter.Short
 
             split[:raw] ->
-              Dialyxir.Formatter.Raw
+              DialyxirVendored.Formatter.Raw
 
             true ->
-              Dialyxir.Formatter.Dialyxir
+              DialyxirVendored.Formatter.DialyxirVendored
           end
 
         info("Starting Dialyzer")

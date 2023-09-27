@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.MissingRange do
+defmodule DialyxirVendored.Warnings.MissingRange do
   @moduledoc """
   Function spec declares a list of types, but function returns value
   outside stated range.
@@ -19,13 +19,13 @@ defmodule Dialyxir.Warnings.MissingRange do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :missing_range
   def warning(), do: :missing_range
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([module, function, arity | _]) do
     pretty_module = ErlexVendored.pretty_print(module)
@@ -33,7 +33,7 @@ defmodule Dialyxir.Warnings.MissingRange do
     "The type specification is missing types returned by #{pretty_module}.#{function}/#{arity}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([module, function, arity, extra_ranges, contract_range]) do
     pretty_module = ErlexVendored.pretty_print(module)
@@ -54,7 +54,7 @@ defmodule Dialyxir.Warnings.MissingRange do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

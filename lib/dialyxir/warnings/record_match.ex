@@ -1,17 +1,17 @@
-defmodule Dialyxir.Warnings.RecordMatch do
-  @behaviour Dialyxir.Warning
+defmodule DialyxirVendored.Warnings.RecordMatch do
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :record_match
   def warning(), do: :record_match
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
-  defdelegate format_short(args), to: Dialyxir.Warnings.RecordMatching
+  defdelegate format_short(args), to: DialyxirVendored.Warnings.RecordMatching
 
-  @impl Dialyxir.Warning
-  defdelegate format_long(args), to: Dialyxir.Warnings.RecordMatching
+  @impl DialyxirVendored.Warning
+  defdelegate format_long(args), to: DialyxirVendored.Warnings.RecordMatching
 
-  @impl Dialyxir.Warning
-  defdelegate explain(), to: Dialyxir.Warnings.RecordMatching
+  @impl DialyxirVendored.Warning
+  defdelegate explain(), to: DialyxirVendored.Warnings.RecordMatching
 end

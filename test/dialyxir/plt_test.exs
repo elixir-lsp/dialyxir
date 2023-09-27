@@ -1,5 +1,5 @@
-defmodule Dialyxir.PltTest do
-  alias Dialyxir.Plt
+defmodule DialyxirVendored.PltTest do
+  alias DialyxirVendored.Plt
   import ExUnit.CaptureIO, only: [capture_io: 1]
 
   use ExUnit.Case

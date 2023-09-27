@@ -1,4 +1,4 @@
-defmodule Dialyxir.Examples.PatternMatch do
+defmodule DialyxirVendored.Examples.PatternMatch do
   def ok() do
     unmatched(:ok)
   end

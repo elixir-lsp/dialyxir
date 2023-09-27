@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.CallbackNotExported do
+defmodule DialyxirVendored.Warnings.CallbackNotExported do
   @moduledoc """
   Module implements a behaviour, but does not export some of its
   callbacks.
@@ -31,17 +31,17 @@ defmodule Dialyxir.Warnings.CallbackNotExported do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :callback_not_exported
   def warning(), do: :callback_not_exported
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(args), do: format_long(args)
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity]) do
     pretty_behaviour = ErlexVendored.pretty_print(behaviour)
@@ -49,7 +49,7 @@ defmodule Dialyxir.Warnings.CallbackNotExported do
     "Callback function #{function}/#{arity} exists but is not exported (behaviour #{pretty_behaviour})."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

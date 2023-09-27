@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.PatternMatch do
+defmodule DialyxirVendored.Warnings.PatternMatch do
   @moduledoc """
   The pattern matching is never given a value that satisfies all of
   its clauses.
@@ -16,20 +16,20 @@ defmodule Dialyxir.Warnings.PatternMatch do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :pattern_match
   def warning(), do: :pattern_match
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_pattern, type]) do
     pretty_type = ErlexVendored.pretty_print_type(type)
     "The pattern can never match the type #{pretty_type}."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([pattern, type]) do
     pretty_pattern = ErlexVendored.pretty_print_pattern(pattern)
@@ -46,7 +46,7 @@ defmodule Dialyxir.Warnings.PatternMatch do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc

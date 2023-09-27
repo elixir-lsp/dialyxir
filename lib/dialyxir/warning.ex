@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warning do
+defmodule DialyxirVendored.Warning do
   @moduledoc """
   Behaviour for defining warning semantics.
 

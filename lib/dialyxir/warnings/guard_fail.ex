@@ -1,4 +1,4 @@
-defmodule Dialyxir.Warnings.GuardFail do
+defmodule DialyxirVendored.Warnings.GuardFail do
   @moduledoc """
   The function guard either presents an impossible guard or the only
   calls will never succeed against the guards.
@@ -24,19 +24,19 @@ defmodule Dialyxir.Warnings.GuardFail do
       end
   """
 
-  @behaviour Dialyxir.Warning
+  @behaviour DialyxirVendored.Warning
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec warning() :: :guard_fail
   def warning(), do: :guard_fail
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short(_) do
     "The guard clause can never succeed."
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([]) do
     "The guard clause can never succeed."
@@ -68,7 +68,7 @@ defmodule Dialyxir.Warnings.GuardFail do
     """
   end
 
-  @impl Dialyxir.Warning
+  @impl DialyxirVendored.Warning
   @spec explain() :: String.t()
   def explain() do
     @moduledoc
