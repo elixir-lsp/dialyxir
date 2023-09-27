@@ -43,7 +43,7 @@ defmodule Dialyxir.Warnings.GuardFail do
   end
 
   def format_long([guard, args]) do
-    pretty_args = Erlex.pretty_print_args(args)
+    pretty_args = ErlexVendored.pretty_print_args(args)
 
     """
     The guard test:
@@ -55,9 +55,9 @@ defmodule Dialyxir.Warnings.GuardFail do
   end
 
   def format_long([arg, infix, guard]) do
-    pretty_arg = Erlex.pretty_print_args(arg)
-    pretty_infix = Erlex.pretty_print_infix(infix)
-    pretty_guard = Erlex.pretty_print(guard)
+    pretty_arg = ErlexVendored.pretty_print_args(arg)
+    pretty_infix = ErlexVendored.pretty_print_infix(infix)
+    pretty_guard = ErlexVendored.pretty_print(guard)
 
     """
     The guard clause:

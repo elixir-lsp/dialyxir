@@ -8,7 +8,7 @@ defmodule Dialyxir.Warnings.FunctionApplicationArguments do
   @impl Dialyxir.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([args, _type]) do
-    pretty_args = Erlex.pretty_print_args(args)
+    pretty_args = ErlexVendored.pretty_print_args(args)
     "Function application with #{pretty_args} will fail."
   end
 
@@ -20,8 +20,8 @@ defmodule Dialyxir.Warnings.FunctionApplicationArguments do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([args, type]) do
-    pretty_args = Erlex.pretty_print_args(args)
-    pretty_type = Erlex.pretty_print(type)
+    pretty_args = ErlexVendored.pretty_print_args(args)
+    pretty_type = ErlexVendored.pretty_print(type)
 
     "Function application with arguments #{pretty_args} will fail, " <>
       "because the function has type #{pretty_type}."
@@ -30,8 +30,8 @@ defmodule Dialyxir.Warnings.FunctionApplicationArguments do
   # OTP 22+ format
   def format_long([arg_positions, args, type]) do
     pretty_arg_positions = form_positions(arg_positions)
-    pretty_args = Erlex.pretty_print_args(args)
-    pretty_type = Erlex.pretty_print(type)
+    pretty_args = ErlexVendored.pretty_print_args(args)
+    pretty_type = ErlexVendored.pretty_print(type)
 
     "Function application with arguments #{pretty_args} will fail, " <>
       "because the function has type #{pretty_type}, " <>

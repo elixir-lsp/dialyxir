@@ -32,9 +32,9 @@ defmodule Dialyxir.Warnings.CallbackArgumentTypeMismatch do
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([behaviour, function, arity, position, success_type, callback_type]) do
-    pretty_behaviour = Erlex.pretty_print(behaviour)
-    pretty_success_type = Erlex.pretty_print_type(success_type)
-    pretty_callback_type = Erlex.pretty_print_type(callback_type)
+    pretty_behaviour = ErlexVendored.pretty_print(behaviour)
+    pretty_success_type = ErlexVendored.pretty_print_type(success_type)
+    pretty_callback_type = ErlexVendored.pretty_print_type(callback_type)
     ordinal_position = Dialyxir.WarningHelpers.ordinal(position)
 
     """

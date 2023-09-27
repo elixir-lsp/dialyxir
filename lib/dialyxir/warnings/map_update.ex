@@ -23,15 +23,15 @@ defmodule Dialyxir.Warnings.MapUpdate do
   @impl Dialyxir.Warning
   @spec format_short([String.t()]) :: String.t()
   def format_short([_map, key]) do
-    pretty_key = Erlex.pretty_print(key)
+    pretty_key = ErlexVendored.pretty_print(key)
     "Attempted to update key #{pretty_key} in a map that does not have that key."
   end
 
   @impl Dialyxir.Warning
   @spec format_long([String.t()]) :: String.t()
   def format_long([map, key]) do
-    pretty_key = Erlex.pretty_print(key)
-    pretty_map = Erlex.pretty_print(map)
+    pretty_key = ErlexVendored.pretty_print(key)
+    pretty_map = ErlexVendored.pretty_print(map)
 
     """
     Attempted to update a key in a map that does not have that key.
